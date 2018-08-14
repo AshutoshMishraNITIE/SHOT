@@ -15,7 +15,7 @@ mark_as_advanced(SHOT_VERSION_MAJOR SHOT_VERSION_MINOR SHOT_VERSION_PATCH)
 
 # Activates subsolvers, note that corresponding libraries are needed
 option (HAS_CPLEX "Is Cplex available" ON)
-option (HAS_CPLEX_NEW_CALLBACK "Is Cplex version >12.8 so the new callbacks are available?" OFF)
+option (HAS_CPLEX_NEW_CALLBACK "Is Cplex version >12.8 so the new callbacks are available?" ON)
 option (HAS_GUROBI "Is Gurobi available" ON)
 option (HAS_GAMS "Is GAMS available" ON)
 
@@ -23,7 +23,7 @@ option (HAS_GAMS "Is GAMS available" ON)
 # For Gurobi it is also necessary to edit the library version later in this file and in the file test/CMakeLists.txt
 set(COINOS_DIR /opt/OS-2.10-stable)
 set(GUROBI_DIR /opt/gurobi800)
-set(CPLEX_DIR /opt/ibm/ILOG/CPLEX_Studio1263)
+set(CPLEX_DIR /opt/ibm/ILOG/CPLEX_Studio128)
 set(GAMS_DIR /opt/gams/gams25.0.3)
 
 # May be needed to specify the path to where Boost is installed, if not automatically detected

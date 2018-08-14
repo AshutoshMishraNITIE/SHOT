@@ -454,7 +454,9 @@ void CtCallbackI::createHyperplane(Hyperplane hyperplane)
         }
         else
         {
+	    std::cout << " CPLEX freezes here with threads >1 on problem ex1223.osil" << std::endl;
             add(tmpRange, IloCplex::CutManagement::UseCutPurge).end();
+	    std::cout << " Finished adding lazy constraint to CPLEX" << std::endl;
         }
 
         // int constrIndex = 0;
