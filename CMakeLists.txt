@@ -16,8 +16,8 @@ mark_as_advanced(SHOT_VERSION_MAJOR SHOT_VERSION_MINOR SHOT_VERSION_PATCH)
 # Activates subsolvers, note that corresponding libraries are needed
 option (HAS_CPLEX "Is Cplex available" ON)
 option (HAS_CPLEX_NEW_CALLBACK "Is Cplex version >12.8 so the new callbacks are available?" ON)
-option (HAS_GUROBI "Is Gurobi available" ON)
-option (HAS_GAMS "Is GAMS available" ON)
+option (HAS_GUROBI "Is Gurobi available" OFF)
+option (HAS_GAMS "Is GAMS available" OFF)
 
 # Sets the paths required. Edit these to suit your system:
 # For Gurobi it is also necessary to edit the library version later in this file and in the file test/CMakeLists.txt
