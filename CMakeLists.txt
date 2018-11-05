@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 # Sets the release types, e.g. Release, Debug
 #set(CMAKE_BUILD_TYPE Release)
 
-option (COMPILE_TESTS "Should the automated tests be compiled" ON)
+option (COMPILE_TESTS "Should the automated tests be compiled" OFF)
 
 # Sets version number.
 set(SHOT_VERSION_MAJOR   0   CACHE STRING "Project major version number.")
@@ -16,15 +16,15 @@ mark_as_advanced(SHOT_VERSION_MAJOR SHOT_VERSION_MINOR SHOT_VERSION_PATCH)
 # Activates subsolvers, note that corresponding libraries are needed
 option (HAS_CPLEX "Is Cplex available" ON)
 option (HAS_CPLEX_NEW_CALLBACK "Is Cplex version >12.8 so the new callbacks are available?" ON)
-option (HAS_GUROBI "Is Gurobi available" OFF)
-option (HAS_GAMS "Is GAMS available" OFF)
+option (HAS_GUROBI "Is Gurobi available" ON)
+option (HAS_GAMS "Is GAMS available" ON)
 
 # Sets the paths required. Edit these to suit your system:
 # For Gurobi it is also necessary to edit the library version later in this file and in the file test/CMakeLists.txt
 set(COINOS_DIR /opt/OS-2.10-stable)
 set(GUROBI_DIR /opt/gurobi800)
 set(CPLEX_DIR /opt/ibm/ILOG/CPLEX_Studio128)
-set(GAMS_DIR /opt/gams/gams25.0.3)
+set(GAMS_DIR /opt/gams/gams25.1.2)
 
 # May be needed to specify the path to where Boost is installed, if not automatically detected
 #set(Boost_INCLUDE_DIR /usr/include)

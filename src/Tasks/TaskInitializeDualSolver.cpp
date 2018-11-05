@@ -91,7 +91,6 @@ TaskInitializeDualSolver::TaskInitializeDualSolver(ES_MIPSolver solver, bool use
 
 TaskInitializeDualSolver::~TaskInitializeDualSolver()
 {
-    
 }
 
 void TaskInitializeDualSolver::run()

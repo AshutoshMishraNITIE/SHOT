@@ -463,8 +463,6 @@ void MIPSolverCplexLazy::initializeSolverSettings()
     try
     {
         MIPSolverCplex::initializeSolverSettings();
-
-        cplexInstance.setParam(IloCplex::NumericalEmphasis, 1);
     }
     catch (IloException &e)
     {
@@ -495,6 +493,9 @@ E_ProblemSolutionStatus MIPSolverCplexLazy::solveProblem()
         // If contextMask is not zero we add the callback.
         if (contextMask != 0)
             cplexInstance.use(&cCallback, contextMask);
+
+        // To fix a bug in CPLEX 12.7 and 12.8
+        cplexEnv.setNormalizer(false);
 
         cplexInstance.solve();
 

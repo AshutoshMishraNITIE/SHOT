@@ -454,9 +454,7 @@ void CtCallbackI::createHyperplane(Hyperplane hyperplane)
         }
         else
         {
-	    std::cout << " CPLEX freezes here with threads >1 on problem ex1223.osil" << std::endl;
             add(tmpRange, IloCplex::CutManagement::UseCutPurge).end();
-	    std::cout << " Finished adding lazy constraint to CPLEX" << std::endl;
         }
 
         // int constrIndex = 0;
@@ -554,6 +552,9 @@ E_ProblemSolutionStatus MIPSolverCplexLazyOriginalCallback::solveProblem()
             //Extract the model if we have updated the constraints
             cplexInstance.extract(cplexModel);
         }
+
+        // To fix a bug in CPLEX 12.7 and 12.8
+        //cplexEnv.setNormalizer(false);
 
         cplexInstance.solve();
 
