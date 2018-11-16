@@ -156,9 +156,14 @@ SolutionStrategyMultiTree::SolutionStrategyMultiTree(OSInstance *osInstance)
             ProcessInfo::getInstance().tasks->addTask(tSelectHPPts, "SelectHPPts");
         }
     }
-    else
+    else if (static_cast<ES_HyperplaneCutStrategy>(Settings::getInstance().getIntSetting("CutStrategy", "Dual")) == ES_HyperplaneCutStrategy::ECP)
     {
         TaskBase *tSelectHPPts = new TaskSelectHyperplanePointsSolution();
+        ProcessInfo::getInstance().tasks->addTask(tSelectHPPts, "SelectHPPts");
+    }
+    else
+    {
+        TaskBase *tSelectHPPts = new TaskSelectHyperplanePointsProjection();
         ProcessInfo::getInstance().tasks->addTask(tSelectHPPts, "SelectHPPts");
     }
 

@@ -346,12 +346,13 @@ void SHOTSolver::initializeSettings()
     std::vector<std::string> enumHyperplanePointStrategy;
     enumHyperplanePointStrategy.push_back("ESH");
     enumHyperplanePointStrategy.push_back("ECP");
+    enumHyperplanePointStrategy.push_back("PECP");
     Settings::getInstance().createSetting("CutStrategy", "Dual",
                                           static_cast<int>(ES_HyperplaneCutStrategy::ESH), "Dual cut strategy",
                                           enumHyperplanePointStrategy);
     enumHyperplanePointStrategy.clear();
 
-    Settings::getInstance().createSetting("ECP.ConstraintSelectionFactor", "Dual", 0.0,
+    Settings::getInstance().createSetting("ECP.ConstraintSelectionFactor", "Dual", 0.25,
                                           "The fraction of violated constraints to generate cutting planes for",
                                           0.0, 1.0);
 

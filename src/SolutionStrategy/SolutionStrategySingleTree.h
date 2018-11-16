@@ -47,6 +47,7 @@
 #include "../Tasks/TaskSelectHyperplanePointsLinesearch.h"
 #include "../Tasks/TaskSelectHyperplanePointsIndividualLinesearch.h"
 #include "../Tasks/TaskSelectHyperplanePointsSolution.h"
+#include "../Tasks/TaskSelectHyperplanePointsProjection.h"
 #include "../Tasks/TaskAddHyperplanes.h"
 
 #include "../Tasks/TaskSelectPrimalCandidatesFromSolutionPool.h"
