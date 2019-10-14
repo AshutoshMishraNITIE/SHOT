@@ -509,6 +509,11 @@ void SHOTSolver::initializeSettings()
     Settings::getInstance().createSetting("QuadraticStrategy", "Dual", static_cast<int>(ES_QuadraticProblemStrategy::QuadraticObjective), "How to treat quadratic functions", enumQPStrategy);
     enumQPStrategy.clear();
 
+    // Projection ECP
+
+    Settings::getInstance().createSetting("PECP.ConstraintTolerance", "Dual", 1.0, "The constraint tolerance for when to not continue projection", 0.0, OSDBL_MAX);
+    Settings::getInstance().createSetting("PECP.MaxIterations", "Dual", 3, "The maximum number of projection steps performed", 0, OSINT_MAX);
+
     // Dual strategy settings: Relaxation strategies
 
     Settings::getInstance().createSetting("Relaxation.Frequency", "Dual", 0,

@@ -151,6 +151,9 @@ struct SolutionStatistics
     int numberOfExploredNodes = 0;
     int numberOfOpenNodes = 0;
 
+    int totalNumberOfFailedProjections = 0;
+    int totalNumberOfSuccessfulProjections = 0;
+
     int getNumberOfTotalDualProblems()
     {
         return (numberOfProblemsLP +

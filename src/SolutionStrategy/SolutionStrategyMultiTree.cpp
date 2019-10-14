@@ -163,8 +163,12 @@ SolutionStrategyMultiTree::SolutionStrategyMultiTree(OSInstance *osInstance)
     }
     else
     {
-        TaskBase *tSelectHPPts = new TaskSelectHyperplanePointsProjection();
-        ProcessInfo::getInstance().tasks->addTask(tSelectHPPts, "SelectHPPts");
+
+        //TaskBase *tSelectHPPts = new TaskSelectHyperplanePointsSolution();
+        //ProcessInfo::getInstance().tasks->addTask(tSelectHPPts, "SelectHPPts");
+
+        TaskBase *tSelectHPPts2 = new TaskSelectHyperplanePointsProjection();
+        ProcessInfo::getInstance().tasks->addTask(tSelectHPPts2, "SelectHPPts2");
     }
 
     ProcessInfo::getInstance().tasks->addTask(tAddHPs, "AddHPs");

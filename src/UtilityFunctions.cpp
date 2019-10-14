@@ -37,6 +37,7 @@ void UtilityFunctions::saveVariablePointVectorToFile(std::vector<double> point, 
     }
 
     std::stringstream str;
+    str << std::setprecision(std::numeric_limits<double>::digits10);
 
     for (int i = 0; i < point.size(); i++)
     {
@@ -118,6 +119,7 @@ void UtilityFunctions::displayVector(std::vector<double> point)
 void UtilityFunctions::displayVector(std::vector<double> point1, std::vector<double> point2)
 {
     std::stringstream str;
+    str << std::setprecision(std::numeric_limits<double>::digits10);
 
     if (point1.size() != point2.size())
         return;

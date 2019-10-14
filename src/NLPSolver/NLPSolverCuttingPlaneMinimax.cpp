@@ -36,6 +36,7 @@ class MinimizationFunction
             ptNew.at(i) = x * firstPt.at(i) + (1 - x) * secondPt.at(i);
         }
 
+        auto tmp = NLPProblem->getMostDeviatingConstraint(ptNew);
         auto validNewPt = NLPProblem->getMostDeviatingConstraint(ptNew).value + ptNew.back();
 
         return (validNewPt);
@@ -165,6 +166,17 @@ E_NLPSolutionStatus NLPSolverCuttingPlaneMinimax::solveProblemInstance()
         auto LPVarSol = LPSolver->getVariableSolution(0);
         LPObjVar = LPSolver->getObjectiveValue();
 
+        // Saves the LP solution to file if in debug mode
+        if (Settings::getInstance().getBoolSetting("Debug.Enable", "Output"))
+        {
+            std::stringstream ss;
+            ss << Settings::getInstance().getStringSetting("Debug.Path", "Output");
+            ss << "/lpminimaxsolpt";
+            ss << i;
+            ss << ".txt";
+            UtilityFunctions::saveVariablePointVectorToFile(LPVarSol, NLPProblem->getVariableNames(), ss.str());
+        }
+
         if (UtilityFunctions::isnan(LPObjVar))
         {
             statusCode = E_NLPSolutionStatus::Error;
@@ -201,6 +213,17 @@ E_NLPSolutionStatus NLPSolverCuttingPlaneMinimax::solveProblemInstance()
             // The difference between linesearch and LP objective values
             maxObjDiffAbs = abs(mu - LPObjVar);
             maxObjDiffRel = maxObjDiffAbs / ((1e-10) + abs(LPObjVar));
+
+            // Saves the LP solution to file if in debug mode
+            if (Settings::getInstance().getBoolSetting("Debug.Enable", "Output"))
+            {
+                std::stringstream ss;
+                ss << Settings::getInstance().getStringSetting("Debug.Path", "Output");
+                ss << "/lpminimaxlinesearchsolpt";
+                ss << i;
+                ss << ".txt";
+                UtilityFunctions::saveVariablePointVectorToFile(currSol, NLPProblem->getVariableNames(), ss.str());
+            }
         }
 
         Output::getInstance().outputIterationDetailMinimax((i + 1),
@@ -225,8 +248,9 @@ E_NLPSolutionStatus NLPSolverCuttingPlaneMinimax::solveProblemInstance()
 
         numHyperTot = numHyperTot + numHyperAdded;
 
-        for (int j = 0; j < numHyperAdded; j++)
+        for (int j = 0; j < 1; j++)
         {
+
             std::vector<IndexValuePair> elements; // Contains the terms in the hyperplane
 
             double constant = NLPProblem->calculateConstraintFunctionValue(tmpMostDevs.at(j).idx, currSol);

@@ -789,6 +789,17 @@ void Output::outputSolutionReport()
         report << "\r\n";
     }
 
+    if (ProcessInfo::getInstance().solutionStatistics.totalNumberOfSuccessfulProjections + ProcessInfo::getInstance().solutionStatistics.totalNumberOfFailedProjections > 0)
+    {
+        report << " Number of successful projections:               ";
+        report << ProcessInfo::getInstance().solutionStatistics.totalNumberOfSuccessfulProjections << "\r\n";
+
+        report << " Number of failed projections:                   ";
+        report << ProcessInfo::getInstance().solutionStatistics.totalNumberOfFailedProjections << "\r\n";
+
+        report << "\r\n";
+    }
+
     if (ProcessInfo::getInstance().solutionStatistics.numberOfProblemsNLPInteriorPointSearch > 0 ||
         ProcessInfo::getInstance().solutionStatistics.numberOfProblemsMinimaxLP > 0)
     {

@@ -1309,7 +1309,17 @@ std::string ProcessInfo::getTraceResult()
        << ",";
     ss << this->solutionStatistics.numberOfExploredNodes
        << ",";
-    ss << "#";
+
+    int totalProjections = this->solutionStatistics.totalNumberOfFailedProjections + this->solutionStatistics.totalNumberOfSuccessfulProjections;
+
+    if (totalProjections > 0)
+    {
+        ss << (1.0 * this->solutionStatistics.totalNumberOfSuccessfulProjections / totalProjections);
+    }
+    else
+    {
+        ss << "#";
+    }
 
     return (ss.str());
 }
